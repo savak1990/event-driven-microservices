@@ -22,6 +22,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.projectlombok:lombok'
     implementation 'org.twitter4j:twitter4j-stream:4.0.7'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
