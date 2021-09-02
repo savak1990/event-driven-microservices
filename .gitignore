@@ -8,7 +8,6 @@ logs
 
 ### Sensitive information ###
 twitter4j.properties
-gradle.properties
 
 ### STS ###
 .apt_generated

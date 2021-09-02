@@ -1,0 +1,3 @@
+rootProject.name = 'event-driven-microservices'
+
+include 'twitter-to-kafka-service'
