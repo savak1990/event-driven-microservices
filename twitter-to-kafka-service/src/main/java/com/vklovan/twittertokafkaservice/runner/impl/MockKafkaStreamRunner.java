@@ -1,11 +1,10 @@
 package com.vklovan.twittertokafkaservice.runner.impl;
 
 import com.github.javafaker.Faker;
-import com.vklovan.twittertokafkaservice.config.TwitterToKafkaServiceConfigData;
+import com.vklovan.appconfigdata.config.TwitterToKafkaServiceConfigData;
 import com.vklovan.twittertokafkaservice.listener.TwitterKafkaStatusListener;
 import com.vklovan.twittertokafkaservice.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -46,7 +45,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM dd HH:mm:ss zzz yyyy";
 
     @Override
-    public void start() throws TwitterException {
+    public void start() {
         log.info("Started filtering twitter stream for keywords {}",
                 Arrays.toString(twitterConfigData.getTwitterKeywords().toArray(new String[0])));
         long sleepTimeMs = twitterConfigData.getMockSleepMs();
@@ -56,7 +55,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private void tweet() {
         var keywords = twitterConfigData.getTwitterKeywords();
         String jsonTweet = getFormattedTweet(keywords);
-        Status status = null;
+        Status status;
 
         try {
             status = TwitterObjectFactory.createStatus(jsonTweet);

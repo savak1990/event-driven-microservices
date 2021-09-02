@@ -1,6 +1,6 @@
 package com.vklovan.twittertokafkaservice.runner.impl;
 
-import com.vklovan.twittertokafkaservice.config.TwitterToKafkaServiceConfigData;
+import com.vklovan.appconfigdata.config.TwitterToKafkaServiceConfigData;
 import com.vklovan.twittertokafkaservice.listener.TwitterKafkaStatusListener;
 import com.vklovan.twittertokafkaservice.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class TwitterKafkaStreamRunner implements StreamRunner {
     private TwitterStream twitterStream;
 
     @Override
-    public void start() throws TwitterException {
+    public void start() {
         twitterStream = new TwitterStreamFactory().getInstance();
         twitterStream.addListener(twitterKafkaStatusListener);
         addFilter();
