@@ -19,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -36,13 +37,13 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private final Faker faker = Faker.instance();
 
     private static final String TWEET_AS_RAW_JSON_TEMPLATE = "{" +
-            "\"createdAt\":\"%s\"," +
+            "\"created_at\":\"%s\"," +
             "\"id\":\"%s\"," +
             "\"text\":\"%s\"," +
             "\"user\":{\"id\":\"%s\"}" +
             "}";
 
-    private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM dd HH:mm:ss zzz yyyy";
+    private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM d HH:mm:ss z yyyy";
 
     @Override
     public void start() {
@@ -67,7 +68,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     }
 
     private String getFormattedTweet(List<String> keywords) {
-        String createdAt = ZonedDateTime.now().format(DateTimeFormatter.ofPattern(TWITTER_STATUS_DATE_FORMAT));
+        String createdAt = ZonedDateTime.now().format(DateTimeFormatter.ofPattern(TWITTER_STATUS_DATE_FORMAT, Locale.ENGLISH));
         String id = String.valueOf(ThreadLocalRandom.current().nextLong(Long.MAX_VALUE));
         String text = getRandomTweetContent(keywords);
         String userId = String.valueOf(ThreadLocalRandom.current().nextLong(Long.MAX_VALUE));

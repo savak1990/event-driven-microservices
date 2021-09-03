@@ -5,4 +5,5 @@ include 'app-config-data'
 include 'kafka-model'
 include 'kafka-admin'
 include 'kafka-producer'
+include 'common-config'
 
