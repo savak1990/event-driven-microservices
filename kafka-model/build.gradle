@@ -1,0 +1,9 @@
+plugins {
+    id 'com.github.davidmc24.gradle.plugin.avro' version '1.2.1' apply false
+}
+
+apply plugin: 'com.github.davidmc24.gradle.plugin.avro'
+
+dependencies {
+    implementation 'org.apache.avro:avro:1.10.2'
+}
