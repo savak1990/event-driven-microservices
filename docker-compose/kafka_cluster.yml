@@ -31,6 +31,9 @@ services:
       SCHEMA_REGISTRY_DEBUG: 'true'
     networks:
       - ${GLOBAL_NETWORK:-kafka}
+
+# TODO Figure out why container stop/start doesn't work.
+# Need to completely remove the container in order this to work
   kafka-broker-1:
     image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-1

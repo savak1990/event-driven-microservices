@@ -3,3 +3,15 @@ plugins {
 }
 
 apply plugin: 'com.github.davidmc24.gradle.plugin.avro'
+
+bootBuildImage {
+    enabled = false
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
